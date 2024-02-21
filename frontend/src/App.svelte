@@ -7,7 +7,7 @@
 	let nameInput
 
 	const getVisits = () => {
-		axios.get('http://localhost:5000/visits')
+		axios.get('http://localhost:51000/visits')
 			.then((response) => {
 				visits = response.data.visits
 				backendConnected = true
@@ -17,7 +17,7 @@
 			})
 	}
 	const addVisit = () => {
-		axios.post('http://localhost:5000/visits', {
+		axios.post('http://localhost:51000/visits', {
 			name: nameInput
 		}).then((response) => {
 			nameInput = ''
@@ -45,7 +45,7 @@
 		{#if backendConnected}
 			<input 
 				type="text" 
-				placeholder="방문자 이름을 입력하시고 엔터를 누르세요."
+				placeholder="your name please"
 				bind:value={nameInput}
 				on:keypress={handleKeyPressOrder}
 				/>
@@ -95,6 +95,7 @@
 		line-height: 40px;
 	}
 	table th {
+		background-color: #eee;
 		border-bottom: 2px solid #ddd;
 	}
 	table td {

@@ -1,13 +1,21 @@
 FROM node:12.18.4
 
 # 이미지 생성 과정에서 실행할 명령어
-RUN npm install -g http-server 
+RUN npm install -g http-server
 
 # 이미지 내에서 명령어를 실행할(현 위치로 잡을) 디렉토리 설정
 WORKDIR /home/node/app
 
+# 프로젝트 소스 코드를 이미지에 복사
+COPY ./ /home/node/app/
+
+# 프로젝트 빌드를 위한 명령어 실행
+RUN npm install
+RUN npm run build
+
 # 컨테이너 실행시 실행할 명령어
 CMD ["http-server", "-p", "8080", "./public"]
+
 
 # 이미지 생성 명령어 (현 파일과 같은 디렉토리에서)
 # docker build -t {이미지명} .

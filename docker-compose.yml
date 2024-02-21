@@ -12,7 +12,7 @@ services:
     volumes:
       - ./backend:/usr/src/app
     ports:
-      - "5000:5000"
+      - "51000:5000"
     # 환경변수 설정
     environment: 
       - DBHOST=database
